@@ -1,0 +1,30 @@
+
+form input, form select, form textarea {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+.alert {
+    margin-top: 10px;
+}
+button {
+    font-weight: bold;
+}
+.content-box {
+    background-color: #212529;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 900px;
+    width: 100%;
+    margin: 30px auto 0;
+}
+
+.botao-voltar {
+    display: block;
+    margin: 20px auto 0;
+    max-width: 300px;
+    text-align: center;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Página Inicial{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<div class="container text-center mt-4">
+  <h2 class="mb-4">Bem-vindo ao Sistema de Gerenciamento de EPI</h2>
+  <div class="row g-3 justify-content-center">
+    <div class="col-md-4">
+      <a href="{% url 'cadastrar_colaborador' %}" class="btn btn-outline-primary w-100 p-3">Cadastrar Colaborador</a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'listar_colaboradores' %}" class="btn btn-outline-info w-100 p-3">Editar Colaborador</a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'cadastrar_equipamento' %}" class="btn btn-outline-success w-100 p-3">Cadastrar Equipamento</a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'listar_equipamentos' %}" class="btn btn-outline-warning w-100 p-3">Editar Equipamento</a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'controle_epi' %}" class="btn btn-outline-dark w-100 p-3"><strong>Controle de EPI</strong></a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'relatorio_colaborador' %}" class="btn btn-outline-secondary w-100 p-3">Relatórios</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

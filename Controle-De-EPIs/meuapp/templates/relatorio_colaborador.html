@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Relatório de Colaboradores{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'relatorio.css' %}">
+
+<div class="content-box">
+  <h2 class="mb-4">Relatório de Equipamentos por Colaborador</h2>
+
+  <form method="get" class="mb-3">
+    <input type="text" name="nome" value="{{ nome }}" class="form-control mb-2" placeholder="Pesquisar por colaborador">
+    <button class="btn btn-outline-light" type="submit">Buscar</button>
+  </form>
+
+  <a href="/" class="btn btn-secondary mb-4">Voltar à Página Inicial</a>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  {% if emprestimos %}
+  <table class="table table-dark table-bordered text-center align-middle">
+    <thead>
+      <tr>
+        <th>Colaborador</th>
+        <th>Equipamento</th>
+        <th>Data Entrega</th>
+        <th>Data Prevista</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in emprestimos %}
+      <tr>
+        <td>{{ item.colaborador.nome }}</td>
+        <td>{{ item.equipamento.nome }}</td>
+        <td>{{ item.data_entrega|date:"d/m/Y H:i" }}</td>
+        <td>{{ item.data_prevista_devolucao|date:"d/m/Y" }}</td>
+        <td>{{ item.get_status_display }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <div class="alert alert-warning mt-3">Desculpe, mas não encontramos dados correspondentes à sua busca :(</div>
+  {% endif %}
+</div>
+{% endblock %}
