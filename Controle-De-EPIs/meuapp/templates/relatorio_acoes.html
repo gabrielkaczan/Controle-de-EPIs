@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Relatório de Registros{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'relatorio.css' %}">
+
+<div class="content-box">
+  <h2 class="mb-4">Relatório de Registros</h2>
+
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label class="form-label">Tipo de Ação</label>
+      <input type="text" name="tipo_acao" class="form-control" value="{{ tipo_acao }}" placeholder="Ex: Colaborador">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Descrição Contém</label>
+      <input type="text" name="descricao" class="form-control" value="{{ descricao }}" placeholder="Palavra-chave">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Data Inicial</label>
+      <input type="date" name="data_inicio" class="form-control" value="{{ data_inicio }}">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Data Final</label>
+      <input type="date" name="data_fim" class="form-control" value="{{ data_fim }}">
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button type="submit" class="btn btn-outline-light">Pesquisar</button>
+    </div>
+  </form>
+
+  <table class="table table-dark table-bordered text-center align-middle">
+    <thead>
+      <tr>
+        <th>Tipo de Ação</th>
+        <th>Descrição</th>
+        <th>Usuário</th>
+        <th>Data e Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for registro in registros %}
+      <tr>
+        <td>{{ registro.tipo_acao }}</td>
+        <td>{{ registro.descricao }}</td>
+        <td>{{ registro.usuario }}</td>
+        <td>{{ registro.data_hora|date:"d/m/Y" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">Nenhum registro encontrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="/" class="btn btn-secondary botao-voltar">Voltar à Página Inicial</a>
+</div>
+{% endblock %}

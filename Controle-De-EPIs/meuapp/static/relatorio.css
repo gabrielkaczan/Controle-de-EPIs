@@ -1,0 +1,23 @@
+
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 14px;
+}
+input[type="text"] {
+    margin-bottom: 0;
+}
+.alert {
+    margin-top: 10px;
+}
+.content-box {
+    background-color: #212529;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 900px;
+    width: 100%;
+    margin: 30px auto 0;
+}
+.input-group {
+    margin-bottom: 10px;
+}
